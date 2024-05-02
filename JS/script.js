@@ -82,18 +82,61 @@ async function createCustomers() {
   const phone = document.getElementById("contact-phone").value;
   const message = document.getElementById("contact-message").value;
   try {
-    await fetch(`${API_BASE_URL}/customers`, {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, phone, message }),
-    });
+    if (name.value == "" || email.value == "" || phone.value == "" || message.value == "") {
+      alert("Semua form wajib diisi terlebih dahulu");
+    } else {
+      await fetch(`${API_BASE_URL}/customers`, {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, phone, message }),
+      });
+
+      alert("Submit is Successfully, Thankyou for contact or feedback");
+      name.value = "";
+      email.value = "";
+      phone.value = "";
+      message.value = "";
+    }
   } catch (error) {
     throw error;
-  } finally {
-    alert("Submit is Successfully, Thankyou for contact or feedback");
-    name.value = "";
-    email.value = "";
-    phone.value = "";
-    message.value = "";
   }
+}
+
+// Function to open login modal
+function toggleForms() {
+  var loginForm = document.getElementById("loginForm");
+  var registerForm = document.getElementById("registerForm");
+
+  if (loginForm.style.display === "block") {
+    loginForm.style.display = "none";
+    registerForm.style.display = "block";
+  } else {
+    loginForm.style.display = "block";
+    registerForm.style.display = "none";
+  }
+}
+
+// Function to open login modal
+function openLoginModal() {
+  document.getElementById("loginModal").style.display = "block";
+  // Initially show the login form and hide the register form
+  document.getElementById("loginForm").style.display = "block";
+  document.getElementById("registerForm").style.display = "none";
+}
+
+// Function to close modal
+function closeModal() {
+  document.getElementById("loginModal").style.display = "none";
+}
+
+// Function to handle login (replace this with your actual login logic)
+function login() {
+  alert("Login logic goes here");
+  closeModal();
+}
+
+// Function to handle registration (replace this with your actual registration logic)
+function register() {
+  alert("Registration logic goes here");
+  closeModal();
 }

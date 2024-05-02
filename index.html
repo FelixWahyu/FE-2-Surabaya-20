@@ -18,7 +18,7 @@
 
       <nav class="navbar" id="navbar">
         <div class="login-content">
-          <a href="#login" class="fas fa-user" id="login"></a>
+          <a href="javascript:void(0);" onclick="openLoginModal()" class="fas fa-user" id="login"></a>
           <div class="userid">user01</div>
         </div>
 
@@ -33,7 +33,8 @@
 
       <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
-        <div class="fas fa-user" id="user-btn"></div>
+        <button class="btn-login"><a href="javascript:void(0);" onclick="openLoginModal()">Login</a></button>
+        <a href="javascript:void(0);" onclick="openLoginModal()" class="fas fa-user" id="user-btn"></a>
         <div class="fas fa-bars" id="menu-btn"></div>
       </div>
 
@@ -294,6 +295,37 @@
       <div class="credit">created by <span>Group 20</span> Surabaya</div>
     </section>
     <!-- footer end -->
+
+    <!-- Login and Register start -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="loginForm">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+            <button type="button" onclick="login()">Login</button>
+          </form>
+          <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleForms()">Register here</a></p>
+        </div>
+        <div id="registerForm">
+          <h2>Register</h2>
+          <form id="registerForm">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required />
+            <label for="newPassword">Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required />
+            <button type="button" onclick="register()">Register</button>
+          </form>
+          <p>Already have an account? <a href="javascript:void(0);" onclick="toggleForms()">Login here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- login and register end -->
 
     <!-- JavaScript link -->
     <script src="JS/script.js"></script>
