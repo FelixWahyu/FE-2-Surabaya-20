@@ -82,7 +82,7 @@ async function createCustomers() {
   const phone = document.getElementById("contact-phone").value;
   const message = document.getElementById("contact-message").value;
   try {
-    if (name.value == "" || email.value == "" || phone.value == "" || message.value == "") {
+    if (name !== "" && email !== "" && phone !== "" && message == "") {
       alert("Semua form wajib diisi terlebih dahulu");
     } else {
       await fetch(`${API_BASE_URL}/customers`, {
@@ -92,10 +92,10 @@ async function createCustomers() {
       });
 
       alert("Submit is Successfully, Thankyou for contact or feedback");
-      name.value = "";
-      email.value = "";
-      phone.value = "";
-      message.value = "";
+      name = "";
+      email = "";
+      phone = "";
+      message = "";
     }
   } catch (error) {
     throw error;
